@@ -24,10 +24,13 @@ while oset:
     if node in oset:
         resset[node] = dist
         for v, l in g[node]:
-            heapq.heappush(heap, (dist+l, v))
+        	if v in oset:
+        		heapq.heappush(heap, (dist+l, v))
         oset.remove(node)
 
 targets = [7,37,59,82,99,115,133,165,188,197]
 solve = []
 for t in targets:
     solve.append(resset[t])
+
+print(solve)
